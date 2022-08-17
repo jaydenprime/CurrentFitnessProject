@@ -1,8 +1,41 @@
 
-// var pollenData = document.getElementById("pollen-data")
 var currentAQ = document.getElementById("current-aq")
 var category = document.getElementById("current-cat")
 var number = document.getElementById("current-num")
+var searchBtn = document.getElementById("search-btn")
+var searchInput = document.getElementById("search-input")
+
+searchBtn.addEventListener("click", function() {
+  var cityInput = searchInput.value;
+  var cityUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput}&appid=${api.openWeaKey}`;
+
+  console.log(cityInput)
+
+  getGeoCodeApi();
+
+  function getGeoCodeApi() {
+    var requestUrl = cityUrl;
+    fetch(requestUrl)
+        .then(function (response) {
+        return response.json();
+    })
+        .then(function (data) {
+          console.log(data)
+        var cityLat = data[0].lat
+        var storedLat = cityLat.toFixed(2)
+        localStorage.setItem("lattitude", storedLat)
+        var cityLon = data[0].lon  
+        var storedLon = cityLon.toFixed(2)
+        localStorage.setItem("longtitude", storedLon)
+
+        console.log(storedLat)
+        
+        console.log(storedLon)
+          })
+
+}
+})
+
 function getApi() {
     var requestUrl = `https://api.purpleair.com/v1/sensors?fields=humidity,temperature&api_key=${api.purpAirKey}`;
   
@@ -57,3 +90,24 @@ function airNowApi() {
     });
 }
 airNowApi();
+
+function showWeather() {
+  var cityInput = input.val();
+  if (!cityInput) {
+      alert("Please Enter a Valid City Name")
+      return;
+  }
+  cityEl.text(cityInput);
+  var cityUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput}&appid=${api.key}`;
+  searchedCities.push(cityInput);
+  localStorage.setItem("city", searchedCities);
+  var lastCity = searchedCities[searchedCities.length - 1];
+  var searchEl = $('<li>');
+  searchEl.attr("class", "list-group-item list-group-item-dark li-custom")
+  searchEl.text(lastCity)
+  searchHistory.append(searchEl);
+
+}
+
+
+
