@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="./assets./style.css" /> -->
+    <link rel="stylesheet" href="./assets/style/style.css">
     <title>Current Fitness</title>
   </head>
 
@@ -115,12 +115,12 @@
               <div class="tile is-parent">
                 <article class="tile is-child notification is-info">
                   <p class="title">Air Quality</p>
-                  <p class="subtitle">Used EPA's Air Quality (AirNow) </p>
+                  <!-- <p class="subtitle">Used EPA's Air Quality (AirNow) </p> -->
                   <!-- <p class="subtitle">Use PurpleAir and/or AQICN API and/or AirVisual API</p> -->
                   <ul>
-                    <li id="current-aq">item 1</li>
-                    <li id="current-cat">item 1</li>
-                    <li id="current-num">item 1</li>
+                    <li id="current-aq"></li>
+                    <li id="current-cat"></li>
+                    <li id="current-num"></li>
                     <!-- <li id="current">item 1</li> -->
                   </ul>
                   <!-- <figure class="image is-4by3">
@@ -132,9 +132,15 @@
             <!--footer Widget-->
             <div class="tile is-parent">
               <article class="tile is-child notification is-danger">
-                <p class="title">Reviews/Footer/Site Description</p>
+                <p class="title">Reviews/Footer/Site Description?</p>
+                <ul>
+                  <li>PM2.5 = critical pollutant (at or below 12 μg/m3 is considered healthy with little to no risk from exposure. If the level goes to or above 35 μg/m3 during a 24-hour period, the air is considered unhealthy and can cause issues for people with existing breathing issues such as asthma.)</li>
+                  <li>AQI numbers</li>
+                  <img src="./assets/images/AQI_Colors.png">
+                </ul>
                 <!-- <p class="subtitle">Aligned with the right tile</p> -->
                 <div class="content">
+                  
                   <!-- Content -->
                 </div>
               </article>
@@ -152,6 +158,7 @@
             </article>
           </div>
         </div>
+        <script  src="https://maps.googleapis.com/maps/api/js"></script>
         <script src="config.js"></script>
         <script src="./assets/script/script.js"></script>
     </body>

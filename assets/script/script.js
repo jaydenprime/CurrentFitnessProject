@@ -51,6 +51,24 @@ searchBtn.addEventListener("click", function() {
               //gives air quality
               console.log(data[0].AQI)
               currentAQ.textContent = 'Current Air Quality: ' + data[0].AQI;
+              if (data[0].AQI <51) {
+                currentAQ.setAttribute("class", "green")
+              }
+              if (data[0].AQI <100 && data[0].AQI >=51) {
+                currentAQ.setAttribute("class", "yellow")
+              }
+              if (data[0].AQI <150 && data[0].AQI >=101) {
+                currentAQ.setAttribute("class", "orange")
+              }
+              if (data[0].AQI <200 && data[0].AQI >=151) {
+                currentAQ.setAttribute("class", "red")
+              }
+              if (data[0].AQI <300 && data[0].AQI >=201) {
+                currentAQ.setAttribute("class", "purple")
+              }
+              if (data[0].AQI <500 && data[0].AQI >=301) {
+                currentAQ.setAttribute("class", "maroon")
+              }
               //gives AQ a category name
               console.log(data[0].Category.Name)
               category.textContent = 'Quality: ' + data[0].Category.Name
@@ -66,36 +84,3 @@ searchBtn.addEventListener("click", function() {
 }
 })
 
-function getApi() {
-    var requestUrl = `https://api.purpleair.com/v1/sensors?fields=humidity,temperature&api_key=${api.purpAirKey}`;
-  
-    fetch(requestUrl)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        // console.log(data)
-        // console.log(data.data[0])
-        // treeIndex.textContent = "hi"
-
-      });
-}
-
-getApi();
-
-function testApi() {
-    var requestUrl = `https://api.tomorrow.io/v4/timelines?location=33.8583,-118.0648&fields=treeIndex,grassIndex&apikey=${api.tomKey}`;
-  
-    fetch(requestUrl)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data)
-        console.log(data.data.timelines[0].intervals[0].values.grassIndex)
-        grassIndex.textContent = `grass index: ${data.data.timelines[0].intervals[0].values.grassIndex}`
-        // console.log(data.data[0])
-        // treeIndex.textContent = "hi"
-
-      });
-}
