@@ -1,3 +1,4 @@
+
 .green {
     background-color: #00e400;
 }
@@ -20,4 +21,8 @@
 
 .maroon {
     background-color: #7e0023;
+=======
+#map {
+    display:flex;
+    flex-wrap: wrap;
 }
