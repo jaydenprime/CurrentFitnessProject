@@ -1,5 +1,6 @@
 
 var currentAQ = document.getElementById("current-aq")
+var aqListEl = document.getElementById("aq-li")
 var category = document.getElementById("current-cat")
 var number = document.getElementById("current-num")
 var searchBtn = document.getElementById("search-btn")
@@ -37,6 +38,18 @@ searchBtn.addEventListener("click", function() {
         
         console.log(storedLon)
 
+        var  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
+        var  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
+        var  osmLayer  =  L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});  
+
+        var  WAQI_URL    =  "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=_TOKEN_ID_";  
+        var  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';  
+        var  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
+
+        //cerritos lat 33.86 lon -118.05
+        var  map  =  L.map('map').setView([storedLat,  storedLon],  9);  
+        map.addLayer(osmLayer).addLayer(waqiLayer);  
+
         airNowApi();
 
         function airNowApi() {
@@ -50,7 +63,8 @@ searchBtn.addEventListener("click", function() {
               console.log(data)
               //gives air quality
               console.log(data[0].AQI)
-              currentAQ.textContent = 'Current Air Quality: ' + data[0].AQI;
+              // aqListEl.textContent = ""
+              currentAQ.innerText = data[0].AQI;
               if (data[0].AQI <51) {
                 currentAQ.setAttribute("class", "green")
               }
@@ -71,10 +85,10 @@ searchBtn.addEventListener("click", function() {
               }
               //gives AQ a category name
               console.log(data[0].Category.Name)
-              category.textContent = 'Quality: ' + data[0].Category.Name
+              category.textContent = data[0].Category.Name
               // gives AQ a categry number
               console.log(data[0].Category.Number)
-              number.textContent = 'Category: ' + data[0].Category.Number
+              number.textContent = data[0].Category.Number
         
             });
         }
@@ -83,4 +97,3 @@ searchBtn.addEventListener("click", function() {
           
 }
 })
-
