@@ -10,6 +10,10 @@ var storedLat = localStorage.getItem("latitude")
 var storedLon = localStorage.getItem("longtitude")
 
 searchBtn.addEventListener("click", function() {
+
+document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
+  
+
   var cityInput = searchInput.value;
   var cityUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput}&appid=${api.openWeaKey}`;
 
@@ -24,18 +28,13 @@ searchBtn.addEventListener("click", function() {
         return response.json();
     })
         .then(function (data) {
-          console.log(data)
+          // console.log(data)
         var cityLat = data[0].lat
         var storedLat = cityLat.toFixed(2)
         localStorage.setItem("lattitude", storedLat)
         var cityLon = data[0].lon  
         var storedLon = cityLon.toFixed(2)
         localStorage.setItem("longtitude", storedLon)
-
-        console.log(storedLat)
-        
-        console.log(storedLon)
-
         var riseSetUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${storedLat}&lon=${storedLon}&units=imperial&appid=${api.openWeaKey}`;
         fetch(riseSetUrl)
             .then((response) => {
@@ -51,7 +50,7 @@ searchBtn.addEventListener("click", function() {
                 document.getElementById("sunrise").innerHTML = riseUTC
                 document.getElementById("sunset").innerHTML = setUTC
         
-                console.log(data)
+                // console.log(data)
             })
             .catch(error => {
               console.log(error)
@@ -68,9 +67,9 @@ searchBtn.addEventListener("click", function() {
               return response.json(); 
             })
             .then(function (data) {
-              console.log(data)
+              // console.log(data)
               //gives air quality
-              console.log(data[0].AQI)
+              // console.log(data[0].AQI)
               // aqListEl.textContent = ""
               currentAQ.innerText = data[0].AQI;
               if (data[0].AQI <51) {
@@ -112,7 +111,7 @@ searchBtn.addEventListener("click", function() {
               return response.json();
             })
             .then(function (data) {
-              console.log(data)
+              // console.log(data)
               //Current
               let cHour1 = moment().add(1, "hourly").format("hh:" + "mma");
               let hour1 = data.hourly[1].feels_like;
@@ -227,6 +226,7 @@ searchBtn.addEventListener("click", function() {
             });
       }
         //leaflet map API
+        document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>"; 
         var  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
         var  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
         var  osmLayer  =  L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});  
@@ -234,10 +234,8 @@ searchBtn.addEventListener("click", function() {
         var  WAQI_URL    =  "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=_TOKEN_ID_";  
         var  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';  
         var  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
-        var  map  =  L.map('map').setView([storedLat,  storedLon],  9);  
+        var  map  =  L.map('map').setView([storedLat,  storedLon],  10);  
         map.addLayer(osmLayer).addLayer(waqiLayer);  
-
-          })
-          
+      })  
 }
 })
