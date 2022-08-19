@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--link for external CSS styling from Bulma-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-
+    <!--leaflet external CSS-->
     <link  rel="stylesheet"  href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"  /> 
-
+    <!--link for local stylesheet-->
     <link rel="stylesheet" href="./assets/style/style.css">
     <title>Current Fitness</title>
-    
   </head>
 
   <body>
@@ -21,256 +22,222 @@
           <!-- <img src="" width="112" height="28"> -->
           <h1><strong>Site LOGO</strong></h1>
         </a>
-    
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
-    
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
-            Home
-          </a>
-    
-          <a class="navbar-item">
-            Air Quality
-          </a>
-    
+          <a class="navbar-item">Home</a>
+          <a class="navbar-item">Air Quality</a>
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-    
+            <a class="navbar-link">More</a>
             <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Air Quality Index
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
+              <a class="navbar-item">About</a>
+              <a class="navbar-item">Air Quality Index</a>
+              <a class="navbar-item">Contact</a>
               <hr class="navbar-divider">
-              <a class="navbar-item">
-                Leave a Review
-              </a>
+              <a class="navbar-item">Leave a Review</a>
             </div>
           </div>
         </div>
-    
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
               <a class="button is-primary">
                 <strong>Sign up</strong>
               </a>
-              <a class="button is-light">
-                Log in
-              </a>
+              <a class="button is-light">Log in</a>
             </div>
           </div>
         </div>
       </div>
     </nav>
-        <header class=""> 
-          <div class="container">
-            <div class="notification is-primary">
-              <section class="hero is-primary">
-                <div class="hero-body">
-                  <p class="title">
-                    Current Fitness
-                  </p>
-                  <!-- <p class="subtitle">
-                    Primary subtitle
-                  </p> -->
-                  <div>
-                    <input id="search-input">
-                    <button id="search-btn">Search</button>
-                   </div>
-                </div>
-              </section>
-            </div>
-          </div>
-        </header>
-       <br/>
-       <br/>
-        <!--Weather API Widget-->
-        <div class="tile is-ancestor">
-          <div class="tile is-vertical is-8">
-            <div class="tile">
-
-              <div class="tile is-parent">
-                <article class="tile is-child notification is-warning">
-                  <div class="content">
-                    <p class="title srss">Sunrise</p>
-                      <div><img src="./assets/images/sunrise.svg"></div>
-                      <br>
-                      <div id="sunrise"></div>
-                    <div class="content">
-                      <!-- Content -->
-                    </div>
-                  </div>
-                </article>
-                <article class="tile is-child notification is-success">
-                  <p class="title" id="pollen-data">Sunset</p>
-                  <div><img src="./assets/images/sunset.svg"></div>
-                      <br>
-                      <div id="sunset"></div>
-                  <ul id="pollen-info">
-                    <li id="tree-index"></li>
-                  </ul>
-                </article>
-              </div>
-  
-              <div class="tile is-parent">
-                <article class="tile is-child notification is-info">
-                  <p class="title">Air Quality</p>
-                  <ul>
-                    <li>Current Air Quality: <span id="current-aq"></span></li>
-                    <li>Category Description: <span id="current-cat"></span></li>
-                    <li>Category Number: <span id="current-num"></span></li>
-                    
-                  </ul>
-                </article>
+    <header class=""> 
+      <div class="container">
+        <div class="notification is-primary">
+          <section class="hero is-primary">
+            <div class="hero-body">
+              <p class="title">Current Fitness</p>
+              <div>
+                <input id="search-input">
+                <button id="search-btn">Search</button>
               </div>
             </div>
-            <!--footer Widget-->
-            <div class="tile is-parent">
-              <article class="tile is-child notification is-danger ">
-                <p class="title">Current Weather and Forecast</p>
-                <div class="columns">
-                <!--Current Weather-->
-                <div class="column is-narrow">
-                  <ul>
-                    <li id="cHour1"></li>
-                    <li id="hour1"></li>
-                    <li id="clouds1"></li>
-                    <li id="maxTemp1"></li>
-                    <li id="minTemp1"></li>
-                    <li id="wind1"></li>
-                    <li id="hum1"></li>
-                  </ul>
-                </div>
-                <!--hour 2-->
-                <div class="column is-narrow">
-                  <ul>
-                    <li id="cHour2"></li>
-                    <li id="hour2"></li>
-                    <li id="clouds2"></li>
-                    <li id="maxTemp2"></li>
-                    <li id="minTemp2"></li>
-                    <li id="wind2"></li>
-                    <li id="hum2"></li>
-                  </ul>
-                </div>
-                 <!--hour 3-->
-                 <div class="column is-narrow">
-                  <ul>
-                    <li id="cHour3"></li>
-                    <li id="hour3"></li>
-                    <li id="clouds3"></li>
-                    <li id="maxTemp3"></li>
-                    <li id="minTemp3"></li>
-                    <li id="wind3"></li>
-                    <li id="hum3"></li>
-                  </ul>
-                </div>
-                <!--hour 4-->
-                <div class="column is-narrow">
-                  <ul>
-                    <li id="cHour4"></li>
-                    <li id="hour4"></li>
-                    <li id="clouds4"></li>
-                    <li id="maxTemp4"></li>
-                    <li id="minTemp4"></li>
-                    <li id="wind4"></li>
-                    <li id="hum4"></li>
-                  </ul>
-                </div>
-                <!--hour 5-->
-                <div class="column is-narrow">
-                  <ul>
-                    <li id="cHour5"></li>
-                    <li id="hour5"></li>
-                    <li id="clouds5"></li>
-                    <li id="maxTemp5"></li>
-                    <li id="minTemp5"></li>
-                    <li id="wind5"></li>
-                    <li id="hum5"></li>
-                  </ul>
-                </div>
-                <!--hour 6-->
-                <div class="column is-narrow">
-                  <ul>
-                    <li id="cHour6"></li>
-                    <li id="hour6"></li>
-                    <li id="clouds6"></li>
-                    <li id="maxTemp6"></li>
-                    <li id="minTemp6"></li>
-                    <li id="wind6"></li>
-                    <li id="hum6"></li>
-                  </ul>
-                </div>
-                <!--hour 7-->
-                <div class="column is-narrow">
-                  <ul>
-                    <li id="cHour7"></li>
-                    <li id="hour7"></li>
-                    <li id="clouds7"></li>
-                    <li id="maxTemp7"></li>
-                    <li id="minTemp7"></li>
-                    <li id="wind7"></li>
-                    <li id="hum7"></li>
-                  </ul>
-                </div>
-              </div>
-                <!-- <p class="subtitle">Aligned with the right tile</p> -->
-                <div class="content">
-                  
-                  <!-- Content -->
-                </div>
-              </article>
-            </div>
-
-          </div>
+          </section>
+        </div>
+      </div>
+    </header>
+    <br/>
+    <br/>
+    <!--Weather API Widget-->
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile">
           <div class="tile is-parent">
-
-            
-              <article class="tile is-child notification is-danger">
-                <p class="title">Why Air Quality Matters?</p>
-                <ul>
-                  <li>PM2.5 = critical pollutant (at or below 12 μg/m3 is considered healthy with little to no risk from exposure. If the level goes to or above 35 μg/m3 during a 24-hour period, the air is considered unhealthy and can cause issues for people with existing breathing issues such as asthma.)</li>
-                  <li>AQI numbers</li>
-                  <img src="./assets/images/AQI_Colors.png">
-                </ul>
-                <!-- <p class="subtitle">Aligned with the right tile</p> -->
-                <div class="content">
-                  
-                  <!-- Content -->
-                </div>
-              </article>
-            </div>
-                <!-- <p class="subtitle">With even more content</p> -->
+            <article class="tile is-child notification is-warning">
+              <div class="content">
+                <p class="title srss">Sunrise</p>
+                  <div><img src="./assets/images/sunrise.svg"></div>
+                  <br>
+                  <div id="sunrise"></div>
                 <div class="content">
                   <!-- Content -->
                 </div>
               </div>
             </article>
+            <article class="tile is-child notification is-success">
+              <p class="title" id="pollen-data">Sunset</p>
+              <div><img src="./assets/images/sunset.svg"></div>
+                  <br>
+                  <div id="sunset"></div>
+                  <ul id="pollen-info">
+                    <li id="tree-index"></li>
+                  </ul>
+            </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-info">
+              <p class="title">Air Quality</p>
+              <ul>
+                <li>Current Air Quality: <span id="current-aq"></span></li>
+                <li>Category Description: <span id="current-cat"></span></li>
+                <li>Category Number: <span id="current-num"></span></li>
+              </ul>
+            </article>
           </div>
         </div>
-        <div  id='map'  style='height:380px;'></div>   
+        <!--footer Widget-->
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-danger ">
+            <p class="title">Current Weather and Forecast</p>
+            <div class="columns">
+            <!--Current Weather-->
+            <div class="column is-narrow">
+              <ul>
+                <li id="cHour1"></li>
+                <li id="hour1"></li>
+                <li id="clouds1"></li>
+                <li id="maxTemp1"></li>
+                <li id="minTemp1"></li>
+                <li id="wind1"></li>
+                <li id="hum1"></li>
+              </ul>
+            </div>
+            <!--hour 2-->
+            <div class="column is-narrow">
+              <ul>
+                <li id="cHour2"></li>
+                <li id="hour2"></li>
+                <li id="clouds2"></li>
+                <li id="maxTemp2"></li>
+                <li id="minTemp2"></li>
+                <li id="wind2"></li>
+                <li id="hum2"></li>
+              </ul>
+            </div>
+              <!--hour 3-->
+              <div class="column is-narrow">
+              <ul>
+                <li id="cHour3"></li>
+                <li id="hour3"></li>
+                <li id="clouds3"></li>
+                <li id="maxTemp3"></li>
+                <li id="minTemp3"></li>
+                <li id="wind3"></li>
+                <li id="hum3"></li>
+              </ul>
+            </div>
+            <!--hour 4-->
+            <div class="column is-narrow">
+              <ul>
+                <li id="cHour4"></li>
+                <li id="hour4"></li>
+                <li id="clouds4"></li>
+                <li id="maxTemp4"></li>
+                <li id="minTemp4"></li>
+                <li id="wind4"></li>
+                <li id="hum4"></li>
+              </ul>
+            </div>
+            <!--hour 5-->
+            <div class="column is-narrow">
+              <ul>
+                <li id="cHour5"></li>
+                <li id="hour5"></li>
+                <li id="clouds5"></li>
+                <li id="maxTemp5"></li>
+                <li id="minTemp5"></li>
+                <li id="wind5"></li>
+                <li id="hum5"></li>
+              </ul>
+            </div>
+            <!--hour 6-->
+            <div class="column is-narrow">
+              <ul>
+                <li id="cHour6"></li>
+                <li id="hour6"></li>
+                <li id="clouds6"></li>
+                <li id="maxTemp6"></li>
+                <li id="minTemp6"></li>
+                <li id="wind6"></li>
+                <li id="hum6"></li>
+              </ul>
+            </div>
+            <!--hour 7-->
+            <div class="column is-narrow">
+              <ul>
+                <li id="cHour7"></li>
+                <li id="hour7"></li>
+                <li id="clouds7"></li>
+                <li id="maxTemp7"></li>
+                <li id="minTemp7"></li>
+                <li id="wind7"></li>
+                <li id="hum7"></li>
+              </ul>
+            </div>
+          </div>
+          <!-- <p class="subtitle">Aligned with the right tile</p> -->
+          <div class="content">
+              
+          <!-- Content -->
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-danger">
+        <p class="title">Why Air Quality Matters?</p>
+        <ul>
+          <li>PM2.5 = critical pollutant (at or below 12 μg/m3 is considered healthy with little to no risk from exposure. If the level goes to or above 35 μg/m3 during a 24-hour period, the air is considered unhealthy and can cause issues for people with existing breathing issues such as asthma.)</li>
+          <li>AQI numbers</li>
+          <img src="./assets/images/AQI_Colors.png">
+        </ul>
+        <!-- <p class="subtitle">Aligned with the right tile</p> -->
+        <div class="content">
+        <!-- Content -->
+        </div>
+      </article>
+      </div>
+      <!-- <p class="subtitle">With even more content</p> -->
+      <div class="content"></div>
+      </div>
+      <!-- Content -->
+      <!--container where leaflet map goes-->
+      <div  id='map'  style='height:380px;'></div>  
+    </div>
+    
+    <script  src="https://maps.googleapis.com/maps/api/js"></script>
+    <script  src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script> 
+    <!-- config script has API keys -->
+    <script src="config.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <!--jQuery CDN-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./assets/script/script.js"></script>
 
-        <script  src="https://maps.googleapis.com/maps/api/js"></script>
-        <script  src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script> 
-        <!-- <script src="./assets/script/config.js"></script> -->
-        <script src="config.js"></script>
-        <!-- Added link to the jQuery library -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="./assets/script/script.js"></script>
-    </body>
+  </body>
+
 </html>

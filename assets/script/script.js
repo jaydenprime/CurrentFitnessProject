@@ -5,11 +5,9 @@ var category = document.getElementById("current-cat")
 var number = document.getElementById("current-num")
 var searchBtn = document.getElementById("search-btn")
 var searchInput = document.getElementById("search-input")
-
+// not needed
 var storedLat = localStorage.getItem("latitude")
 var storedLon = localStorage.getItem("longtitude")
-
-
 
 searchBtn.addEventListener("click", function() {
   var cityInput = searchInput.value;
@@ -60,8 +58,6 @@ searchBtn.addEventListener("click", function() {
             })
 
 
-       
-
         airNowApi();
 
         function airNowApi() {
@@ -107,6 +103,7 @@ searchBtn.addEventListener("click", function() {
 
         getWeatherApi();
 
+        // weather and forecast function
         function getWeatherApi() {
           var requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${storedLat}&lon=${storedLon}&units=imperial&appid=${api.openWeaKey}`;
         
@@ -229,7 +226,7 @@ searchBtn.addEventListener("click", function() {
               $("#hum7").text("Humidity:" + " " + day7hum + "%");
             });
       }
-
+        //leaflet map API
         var  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
         var  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
         var  osmLayer  =  L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});  
@@ -237,8 +234,6 @@ searchBtn.addEventListener("click", function() {
         var  WAQI_URL    =  "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=_TOKEN_ID_";  
         var  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';  
         var  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
-
-        //cerritos lat 33.86 lon -118.05
         var  map  =  L.map('map').setView([storedLat,  storedLon],  9);  
         map.addLayer(osmLayer).addLayer(waqiLayer);  
 
