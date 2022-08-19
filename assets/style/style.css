@@ -27,3 +27,10 @@
     flex-wrap: wrap;
 }
 
+#sunrise {
+    text-align: center;
+}
+
+#sunset {
+    text-align: center;
+}

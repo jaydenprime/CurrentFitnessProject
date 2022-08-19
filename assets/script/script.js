@@ -38,6 +38,28 @@ searchBtn.addEventListener("click", function() {
         
         console.log(storedLon)
 
+        var riseSetUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${storedLat}&lon=${storedLon}&units=imperial&appid=${api.openWeaKey}`;
+        fetch(riseSetUrl)
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                
+                var sunRise = JSON.stringify(data.current.sunrise)
+                var sunSet = JSON.stringify(data.current.sunset)
+                var riseUTC = 'Sunrise:' + '  ' + new Date(sunRise * 1000)
+                var setUTC = 'Sunset:' + '  ' + new Date(sunSet * 1000)
+        
+                document.getElementById("sunrise").innerHTML = riseUTC
+                document.getElementById("sunset").innerHTML = setUTC
+        
+                console.log(data)
+            })
+            .catch(error => {
+              console.log(error)
+            })
+
+
         var  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
         var  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
         var  osmLayer  =  L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});  
@@ -102,3 +124,4 @@ searchBtn.addEventListener("click", function() {
 
 
 
+})
