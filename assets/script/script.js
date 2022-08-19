@@ -96,4 +96,4 @@ searchBtn.addEventListener("click", function() {
           })
           
 }
-})
+
