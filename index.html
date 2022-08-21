@@ -15,12 +15,12 @@
   </head>
 
   <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
+    <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand is-12">
         <a class="navbar-item" href="https://bulma.io">
           <!--Insert logo below (OPTIONAL) -->
           <!-- <img src="" width="112" height="28"> -->
-          <h1><strong>Site LOGO</strong></h1>
+          <h1><strong>CURRENT FITNESS</strong></h1>
         </a>
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
@@ -32,7 +32,7 @@
         <div class="navbar-start">
           <a class="navbar-item">Home</a>
           <a class="navbar-item">Air Quality</a>
-          <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-item has-dropdown is-hoverable has-text-black">
             <a class="navbar-link">More</a>
             <div class="navbar-dropdown">
               <a class="navbar-item">About</a>
@@ -46,21 +46,21 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
+              <a class="button is-primary has-text-black">
                 <strong>Sign up</strong>
               </a>
-              <a class="button is-light">Log in</a>
+              <a class="button is-light has-text-black">Log in</a>
             </div>
           </div>
         </div>
       </div>
     </nav>
     <header class=""> 
-      <div class="container">
-        <div class="notification is-primary">
-          <section class="hero is-primary">
+      <div class="is-full">
+        <div id="heroTitle" class="notification is-12">
+          <section class="hero">
             <div class="hero-body">
-              <p class="title">Current Fitness</p>
+              <p class="title has-text-black">Current Fitness</p>
               <div>
                 <input id="search-input">
                 <button id="search-btn">Search</button>
@@ -74,46 +74,58 @@
     <br/>
     <!--Weather API Widget-->
     <div class="tile is-ancestor">
-      <div class="tile is-vertical is-8">
+      <div class="tile is-vertical is-12">
         <div class="tile">
           <div class="tile is-parent">
-            <article class="tile is-child notification is-warning">
+            <article id="sunriseTile" class="tile is-2 is-child notification has-text-black">
               <div class="content">
                 <p class="title srss">Sunrise</p>
                   <div><img src="./assets/images/sunrise.svg"></div>
                   <br>
                   <div id="sunrise"></div>
-                <div class="content">
-                  <!-- Content -->
-                </div>
               </div>
             </article>
-            <article class="tile is-child notification is-success">
-              <p class="title" id="pollen-data">Sunset</p>
+            <article id="sunsetTile" class="tile is-2 is-child notification has-text-black">
+              <p class="title" >Sunset</p>
               <div><img src="./assets/images/sunset.svg"></div>
                   <br>
                   <div id="sunset"></div>
                   <ul id="pollen-info">
                     <li id="tree-index"></li>
                   </ul>
+                  
             </article>
-          </div>
-          <div class="tile is-parent">
-            <article class="tile is-child notification is-info">
-              <p class="title">Air Quality</p>
-              <ul>
+            <article id="airQ" class="tile is-3 is-child notification">
+              <p class="title has-text-black">Air Quality</p>
+              <ul class=" has-text-black">
                 <li>Current Air Quality: <span id="current-aq"></span></li>
                 <li>Category Description: <span id="current-cat"></span></li>
                 <li>Category Number: <span id="current-num"></span></li>
               </ul>
             </article>
+            <article>
+              <div id="whyAirQ" class="tile is-12 is-child notification has-text-black">
+                <p class="title">Why Air Quality Matters?</p>
+              <ul>
+                <li>PM2.5 = critical pollutant (at or below 12 μg/m3 is considered healthy with little to no risk from exposure. If the level goes to or above 35 μg/m3 during a 24-hour period, the air is considered unhealthy and can cause issues for people with existing breathing issues such as asthma.)</li>
+              <p>AQI Graph Display Numbers</p>
+              <img src="./assets/images/AQI_Colors.png">
+            </ul>
+            <!-- <p class="subtitle">Aligned with the right tile</p> -->
+            <div class="content">
+            <!-- Content -->
+            </div>
+              </div>
+            </article>
           </div>
+          
+          
         </div>
         <!--footer Widget-->
         <div class="tile is-parent">
-          <article class="tile is-child notification is-danger ">
-            <p class="title">Current Weather and Forecast</p>
-            <div class="columns">
+          <article id="weatherArt" class="tile is-child notification has-text-black">
+            <p id="curWeather" class="title">Current Weather and Forecast</p>
+            <div id="curWeatherCol" class="columns">
             <!--Current Weather-->
             <div class="column is-narrow">
               <ul>
@@ -208,18 +220,7 @@
       </div>
     </div>
     <div class="tile is-parent">
-      <article class="tile is-child notification is-danger">
-        <p class="title">Why Air Quality Matters?</p>
-        <ul>
-          <li>PM2.5 = critical pollutant (at or below 12 μg/m3 is considered healthy with little to no risk from exposure. If the level goes to or above 35 μg/m3 during a 24-hour period, the air is considered unhealthy and can cause issues for people with existing breathing issues such as asthma.)</li>
-          <li>AQI numbers</li>
-          <img src="./assets/images/AQI_Colors.png">
-        </ul>
-        <!-- <p class="subtitle">Aligned with the right tile</p> -->
-        <div class="content">
-        <!-- Content -->
-        </div>
-      </article>
+      
       </div>
       <!-- <p class="subtitle">With even more content</p> -->
       <div class="content"></div>
@@ -241,3 +242,8 @@
   </body>
 
 </html>
+
+
+
+
+
