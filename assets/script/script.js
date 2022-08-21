@@ -10,7 +10,7 @@ var storedLat = localStorage.getItem("latitude")
 var storedLon = localStorage.getItem("longtitude")
 
 searchBtn.addEventListener("click", function() {
-
+ 
 document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
   
 
@@ -136,7 +136,7 @@ document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; he
               let minTemp2 = data.daily[2].temp.min;
               let day2hum = data.daily[2].humidity;
               let day2wind = data.daily[2].wind_speed;
-              $("#cHour2").text("Around " + cHour2 + " Tomorrow");
+              $("#cHour2").text("At " + cHour2 + " Tomorrow");
               $("#hour2").text("It Will Feels like " + hour2);
               $("#clouds2").text(clouds2 + "% Cloud Coverage");
               $("#maxTemp2").text("Daily High of: " + maxTemp2 + " F°");
@@ -152,7 +152,7 @@ document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; he
               let minTemp3 = data.daily[3].temp.min;
               let day3hum = data.daily[3].humidity;
               let day3wind = data.daily[3].wind_speed;
-              $("#cHour3").text("Around " + cHour3 + " in 2 Days");
+              $("#cHour3").text("At " + cHour3 + " in 2 Days");
               $("#hour3").text("It Will Feels like " + hour3);
               $("#clouds3").text(clouds3 + "% Cloud Coverage");
               $("#maxTemp3").text("Daily High of: " + maxTemp3 + " F°");
@@ -168,7 +168,7 @@ document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; he
               let minTemp4 = data.daily[4].temp.min;
               let day4hum = data.daily[4].humidity;
               let day4wind = data.daily[4].wind_speed;
-              $("#cHour4").text("Around " + cHour4 + " in 3 Days");
+              $("#cHour4").text("At " + cHour4 + " in 3 Days");
               $("#hour4").text("It Will Feels like " + hour4);
               $("#clouds4").text(clouds4 + "% Cloud Coverage");
               $("#maxTemp4").text("Daily High of: " + maxTemp4 + " F°");
@@ -184,7 +184,7 @@ document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; he
               let minTemp5 = data.daily[5].temp.min;
               let day5hum = data.daily[5].humidity;
               let day5wind = data.daily[5].wind_speed;
-              $("#cHour5").text("Around " + cHour5 + " in 4 Days");
+              $("#cHour5").text("At " + cHour5 + " in 4 Days");
               $("#hour5").text("It Will Feels like " + hour5);
               $("#clouds5").text(clouds5 + "% Cloud Coverage");
               $("#maxTemp5").text("Daily High of: " + maxTemp5 + " F°");
@@ -200,7 +200,7 @@ document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; he
               let minTemp6 = data.daily[6].temp.min;
               let day6hum = data.daily[6].humidity;
               let day6wind = data.daily[6].wind_speed;
-              $("#cHour6").text("Around " + cHour6 + " in 5 Days");
+              $("#cHour6").text("At " + cHour6 + " in 5 Days");
               $("#hour6").text("It Will Feels like " + hour6);
               $("#clouds6").text(clouds6 + "% Cloud Coverage");
               $("#maxTemp6").text("Daily High of: " + maxTemp6 + " F°");
@@ -216,7 +216,7 @@ document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; he
               let minTemp7 = data.daily[7].temp.min;
               let day7hum = data.daily[7].humidity;
               let day7wind = data.daily[7].wind_speed;
-              $("#cHour7").text("Around " + cHour7 + " in 6 Days");
+              $("#cHour7").text("At " + cHour7 + " in 6 Days");
               $("#hour7").text("It Will Feels like " + hour7);
               $("#clouds7").text(clouds7 + "% Cloud Coverage");
               $("#maxTemp7").text("Daily High of: " + maxTemp7 + " F°");
@@ -225,6 +225,7 @@ document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; he
               $("#hum7").text("Humidity:" + " " + day7hum + "%");
             });
       }
+
         //leaflet map API
         document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>"; 
         var  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
@@ -238,4 +239,4 @@ document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; he
         map.addLayer(osmLayer).addLayer(waqiLayer);  
       })  
 }
-})
+});

@@ -34,3 +34,85 @@
 #sunset {
     text-align: center;
 }
+
+#heroTitle {
+    background-color: #a5e4b0;
+}
+
+#weatherArt {
+    background-color: rgb(64, 163, 233);
+}
+
+#airQ {
+    background-color: #d7a73f;
+}
+
+#airQ p {
+    text-align: center;
+}
+
+#airQ ul {
+    font-size: 20px;
+}
+
+#whyAirQ {
+background-color: #7efff0;
+}
+
+#whyAirQ ul li {
+    font-size: 20px;
+
+}
+#whyAirQ ul p {
+    font-size: 25px;
+    font-style: bold;
+}
+
+#sunriseTile {
+    text-align: center;
+    background-color: #ffee00;
+    font-size: 20px;
+}
+#sunsetTile {
+    text-align: center;
+    background-color: #80a8d1;
+    font-size: 20px;
+}
+
+.title {
+    font-size: 40px;
+    color: black;
+}
+
+#curWeather {
+    text-align: center;
+    height: 100px;
+}
+
+#curWeatherCol ul li {
+    height: 80px;
+    font-size: 20px;
+    padding: 2px;
+}
+
+#curWeatherCol ul li {
+    width: 170px;
+}
+
+#curWeatherCol ul:hover {
+    border: 5px solid #a5e4b0;
+    background-color: #f0ff69;
+}
+
+
+@media only screen and (max-width: 599px) {
+  
+    .column {
+        margin: 2px;
+        padding: 0 10px 0 10px;
+    }
+      
+    .card-content {
+        padding: 0px;
+        }
+    }
