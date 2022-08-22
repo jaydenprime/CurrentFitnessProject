@@ -1,4 +1,4 @@
-
+// variable declarations
 var currentAQ = document.getElementById("current-aq")
 var aqListEl = document.getElementById("aq-li")
 var category = document.getElementById("current-cat")
@@ -6,71 +6,64 @@ var number = document.getElementById("current-num")
 var searchBtn = document.getElementById("search-btn")
 var searchInput = document.getElementById("search-input")
 var currentCity = document.getElementById("current-city")
+var storedHistory = localStorage.getItem('cities');
+//declaring search history as an empty array
 var searchHistory = [];
 
-
-
-// Function to get search history from local storage
-
-var storedHistory = localStorage.getItem('cities');
-
+// function to show air quality and weather for city from search history
 if (storedHistory) {
   searchHistory = JSON.parse(storedHistory);
   var arr = searchHistory.slice(-1)
-  console.log(searchHistory)
-  console.log(arr)
   var cityUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${arr}&appid=${api.openWeaKey}`;
+
+  $( function() {
+    var cityHistory = searchHistory
+    $( "#search-input" ).autocomplete({
+      source: cityHistory
+    });
+  } );
   
   getGeoCodeApi();
-  
-    function getGeoCodeApi() {
-      var requestUrl = cityUrl;
-      fetch(requestUrl)
-          .then(function (response) {
-          return response.json();
-      })
-          .then(function (data) {
-            // console.log(data)
-          var cityLat = data[0].lat
-          var storedLat = cityLat.toFixed(2)
-          var cityLon = data[0].lon  
-          var storedLon = cityLon.toFixed(2)
-          var riseSetUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${storedLat}&lon=${storedLon}&units=imperial&appid=${api.openWeaKey}`;
-          fetch(riseSetUrl)
-              .then((response) => {
-                  return response.json()
-              })
-              .then((data) => {
-                  
-                  var sunRise = JSON.stringify(data.current.sunrise)
-                  var sunSet = JSON.stringify(data.current.sunset)
-                  var riseUTC = 'Sunrise:' + '  ' + new Date(sunRise * 1000)
-                  var setUTC = 'Sunset:' + '  ' + new Date(sunSet * 1000)
-          
-                  document.getElementById("sunrise").innerHTML = riseUTC
-                  document.getElementById("sunset").innerHTML = setUTC
-          
-                  // console.log(data)
-              })
-              .catch(error => {
-                console.log(error)
-              })
-  
-  
+
+  function getGeoCodeApi() {
+    var requestUrl = cityUrl;
+    fetch(requestUrl)
+      .then(function (response) {
+        return response.json();
+    })
+      .then(function (data) {
+        var cityLat = data[0].lat
+        var storedLat = cityLat.toFixed(2)
+        var cityLon = data[0].lon  
+        var storedLon = cityLon.toFixed(2)
+        var riseSetUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${storedLat}&lon=${storedLon}&units=imperial&appid=${api.openWeaKey}`;
+      fetch(riseSetUrl)
+        .then((response) => {
+            return response.json()
+        })
+          .then((data) => {
+            var sunRise = JSON.stringify(data.current.sunrise)
+            var sunSet = JSON.stringify(data.current.sunset)
+            var riseUTC = 'Sunrise:' + '  ' + new Date(sunRise * 1000)
+            var setUTC = 'Sunset:' + '  ' + new Date(sunSet * 1000)
+      
+            document.getElementById("sunrise").innerHTML = riseUTC
+            document.getElementById("sunset").innerHTML = setUTC
+          })
+          .catch(error => {
+            console.log(error)
+          })
+
           airNowApi();
-  
+
           function airNowApi() {
             var requestUrl = `https://www.airnowapi.org/aq/forecast/latLong/?format=application/json&latitude=${storedLat}&longitude=${storedLon}&date=2022-08-16&distance=25&API_KEY=${api.airNowKey}`;
-          
+
             fetch(requestUrl)
               .then(function (response) {
                 return response.json(); 
               })
               .then(function (data) {
-                // console.log(data)
-                //gives air quality
-                // console.log(data[0].AQI)
-                // aqListEl.textContent = ""
                 currentCity.textContent = arr;
                 currentAQ.innerText = data[0].AQI;
                 if (data[0].AQI <51) {
@@ -100,20 +93,17 @@ if (storedHistory) {
           
               });
           }
-  
+
           getWeatherApi();
-  
           // weather and forecast function
           function getWeatherApi() {
             var requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${storedLat}&lon=${storedLon}&units=imperial&appid=${api.openWeaKey}`;
-          
             fetch(requestUrl)
               .then(function (response) {
                 return response.json();
               })
               .then(function (data) {
-                // console.log(data)
-                //Current
+                // Current weather conditions
                 let cHour1 = moment().add(1, "hourly").format("hh:" + "mma");
                 let hour1 = data.hourly[1].feels_like;
                 let clouds1 = data.hourly[1].clouds;
@@ -129,7 +119,7 @@ if (storedHistory) {
                 $("#wind1").text("Wind Speed: " + day1wind + " mph");
                 $("#hum1").text("Humidity:" + " " + day1hum + "%");
   
-                //Hour 2
+                //Next day weather conditions
                 let cHour2 = moment().add(2, "hourly").format("hh:" + "mma");
                 let hour2 = data.hourly[2].feels_like;
                 let clouds2 = data.hourly[2].clouds;
@@ -145,7 +135,7 @@ if (storedHistory) {
                 $("#wind2").text("Wind Speed: " + day2wind + " mph");
                 $("#hum2").text("Humidity:" + " " + day2hum + "%");
   
-                //hour 3
+                //3rd day weather conditions
                 let cHour3 = moment().add(3, "hourly").format("hh:" + "mma");
                 let hour3 = data.hourly[3].feels_like;
                 let clouds3 = data.hourly[3].clouds;
@@ -160,8 +150,7 @@ if (storedHistory) {
                 $("#minTemp3").text("Daily Low of: " + minTemp3.toFixed() + "°F");
                 $("#wind3").text("Wind Speed: " + day3wind + " mph");
                 $("#hum3").text("Humidity:" + " " + day3hum + "%");
-  
-                //hour 4
+                //4th day weather conditions
                 let cHour4 = moment().add(4, "hourly").format("hh:" + "mma");
                 let hour4 = data.hourly[4].feels_like;
                 let clouds4 = data.hourly[4].clouds;
@@ -176,8 +165,7 @@ if (storedHistory) {
                 $("#minTemp4").text("Daily Low of: " + minTemp4.toFixed() + "°F");
                 $("#wind4").text("Wind Speed: " + day4wind + " mph");
                 $("#hum4").text("Humidity:" + " " + day4hum + "%");
-  
-                //hour 5
+                //5th day weather conditions
                 let cHour5 = moment().add(5, "hourly").format("hh:" + "mma");
                 let hour5 = data.hourly[5].feels_like;
                 let clouds5 = data.hourly[5].clouds;
@@ -192,8 +180,7 @@ if (storedHistory) {
                 $("#minTemp5").text("Daily Low of: " + minTemp5.toFixed() + "°F");
                 $("#wind5").text("Wind Speed: " + day5wind + " mph");
                 $("#hum5").text("Humidity:" + " " + day5hum + "%");
-  
-                //hour 6
+                //6th day weather conditions
                 let cHour6 = moment().add(6, "hourly").format("hh:" + "mma");
                 let hour6 = data.hourly[6].feels_like;
                 let clouds6 = data.hourly[6].clouds;
@@ -208,8 +195,7 @@ if (storedHistory) {
                 $("#minTemp6").text("Daily Low of: " + minTemp6.toFixed() + "°F");
                 $("#wind6").text("Wind Speed: " + day6wind + " mph");
                 $("#hum6").text("Humidity:" + " " + day6hum + "%");
-  
-                //hour 7
+                //7th day weather conditions
                 let cHour7 = moment().add(7, "hourly").format("hh:" + "mma");
                 let hour7 = data.hourly[7].feels_like;
                 let clouds7 = data.hourly[7].clouds;
@@ -230,18 +216,12 @@ if (storedHistory) {
   }
 }
 
-
+//function to retrieve air quality and weather conditions when a city is searched
 searchBtn.addEventListener("click", function() {
-
   var cityInput = searchInput.value;
   var cityUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput}&appid=${api.openWeaKey}`;
-
-  console.log(cityInput)
-  
   searchHistory.push(cityInput)
   localStorage.setItem("cities", JSON.stringify(searchHistory));
-  console.log(searchHistory)
-  
 
   getGeoCodeApi();
 
@@ -252,7 +232,6 @@ searchBtn.addEventListener("click", function() {
         return response.json();
     })
         .then(function (data) {
-          // console.log(data)
         var cityLat = data[0].lat
         var storedLat = cityLat.toFixed(2)
         var cityLon = data[0].lon  
@@ -264,20 +243,17 @@ searchBtn.addEventListener("click", function() {
             })
             .then((data) => {
                 
-                var sunRise = JSON.stringify(data.current.sunrise)
-                var sunSet = JSON.stringify(data.current.sunset)
-                var riseUTC = 'Sunrise:' + '  ' + new Date(sunRise * 1000)
-                var setUTC = 'Sunset:' + '  ' + new Date(sunSet * 1000)
-        
-                document.getElementById("sunrise").innerHTML = riseUTC
-                document.getElementById("sunset").innerHTML = setUTC
-        
-                // console.log(data)
+              var sunRise = JSON.stringify(data.current.sunrise)
+              var sunSet = JSON.stringify(data.current.sunset)
+              var riseUTC = 'Sunrise:' + '  ' + new Date(sunRise * 1000)
+              var setUTC = 'Sunset:' + '  ' + new Date(sunSet * 1000)
+      
+              document.getElementById("sunrise").innerHTML = riseUTC
+              document.getElementById("sunset").innerHTML = setUTC
             })
             .catch(error => {
               console.log(error)
             })
-
 
         airNowApi();
 
@@ -289,10 +265,6 @@ searchBtn.addEventListener("click", function() {
               return response.json(); 
             })
             .then(function (data) {
-              // console.log(data)
-              //gives air quality
-              // console.log(data[0].AQI)
-              // aqListEl.textContent = ""
               currentCity.textContent = cityInput;
               currentAQ.innerText = data[0].AQI;
               if (data[0].AQI <51) {
@@ -324,7 +296,6 @@ searchBtn.addEventListener("click", function() {
         }
 
         getWeatherApi();
-
         // weather and forecast function
         function getWeatherApi() {
           var requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${storedLat}&lon=${storedLon}&units=imperial&appid=${api.openWeaKey}`;
@@ -334,8 +305,7 @@ searchBtn.addEventListener("click", function() {
               return response.json();
             })
             .then(function (data) {
-              // console.log(data)
-              //Current
+
               let cHour1 = moment().add(1, "hourly").format("hh:" + "mma");
               let hour1 = data.hourly[1].feels_like;
               let clouds1 = data.hourly[1].clouds;
@@ -462,35 +432,3 @@ searchBtn.addEventListener("click", function() {
       })  
 }
 })
-
-$( function() {
-  var cityHistory = [
-    "Aliso Viejo",
-    "Anaheim",
-    "Arcadia",
-    "Bellflower",
-    "Cerritos",
-    "Chino Hills",
-    "Corona",
-    "Costa Mesa",
-    "Cypress",
-    "Downey",
-    "Fullerton",
-    "Garden Grove",
-    "Glendale",
-    "Hawaiian Gardens",
-    "Huntington Beach",
-    "Laguna Niguel",
-    "Long Beach",
-    "Los Angeles",
-    "Newport Beach",
-    "Palm Springs",
-    "Pasadena",
-    "Placentia",
-    "San Diego",
-    "Santa Ana"
-  ];
-  $( "#search-input" ).autocomplete({
-    source: cityHistory
-  });
-} );

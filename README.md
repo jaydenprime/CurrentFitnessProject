@@ -14,7 +14,10 @@ The air quality includes an index that is color coded in accordance to the EPA a
 ## [Link to Code on GitHub](https://github.com/EnigmaKontrol/Current_Fitness)
 ----
 ----
-## ![Screenshot]
+## ![Screenshots](assets/images/Screenshot_1.png)
+## ![Screenshots](assets/images/Screenshot_2.png)
+## ![Screenshots](assets/images/Screenshot_3.png)
+## ![Screenshots](assets/images/Screenshot_4.png)
 ----
 ----
 # API Links

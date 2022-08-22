@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,12 +15,12 @@
   </head>
 
   <body>
+    <!--navigation section-->
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
-          <!--Insert logo below (OPTIONAL) -->
+          <!--Site logo-->
           <img src="./assets/images/logo.png" alt="Current Fitness Logo" title="Current Fitness" width="112" height="28">
-          <!-- <h1><strong>Site LOGO</strong></h1> -->
         </a>
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
@@ -57,13 +56,12 @@
       </div>
     </nav>
     <header> 
+      <!-- Search Area container -->
       <div class="container">
         <div class="notification is-primary">
           <section class="hero is-primary">
             <div class="hero-body">
               <p class="title" id="top">Search for a city to see the most updated air quality and weather in your area!</p>
-              
-                
                 <div class="field has-addons">
                   <div class="control">
                     <input id="search-input" class="input is-rounded" type="text" placeholder="Irvine">
@@ -71,32 +69,29 @@
                   <div class="control">
                     <button id="search-btn" class="button is-dark">Search</button>
                   </div>
-                </div>
-                
-              
-            </div>
-          </section>
-        </div>
+              </div>
+          </div>
+        </section>
       </div>
+    </div>
     </header>
     <br/>
     <br/>
-    <!--Weather API Widget-->
+    <!--main section-->
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-8">
         <div class="tile">
           <div class="tile is-parent">
+            <!--Section displaying current sunrise time -->
             <article class="tile is-child notification is-warning">
               <div class="content">
                 <p class="title srss">Sunrise</p>
                   <div><img src="./assets/images/sunrise.svg" alt="Image depicting sunrise"></div>
                   <br>
                   <div id="sunrise" class="custom"></div>
-                <div class="content">
-                  <!-- Content -->
-                </div>
               </div>
             </article>
+            <!--Section displaying sunset time-->
             <article class="tile is-child notification is-dark">
               <p class="title" id="pollen-data">Sunset</p>
               <div><img src="./assets/images/sunset.svg" alt="Image depicting sunset"></div>
@@ -107,6 +102,7 @@
                   </ul>
             </article>
           </div>
+          <!--Section displaying current air quality index value-->
           <div class="tile is-parent">
             <article class="tile is-child notification is-info">
               <p class="title">Air Quality in <span id="current-city"></span></p>
@@ -116,18 +112,14 @@
                 <li>Category Number: <span id="current-num"></span></li>
               </ul>
               <br>
-              
             </article>
           </div>
         </div>
-        <!--footer Widget-->
+        <!--Current Weather and 7-day forecast section-->
         <div class="tile is-parent">
-          <!-- <article class="tile is-child notification is-primary"> -->
             <article id="weatherArt" class="tile is-child notification has-text-black">
-            <!-- <p class="title">Current Weather and Forecast</p> -->
             <p id="curWeather" class="title">Current Weather and Forecast</p>
             <div id="curWeatherCol"class="columns">
-            <!--Current Weather-->
             <div class="column is-narrow">
               <ul>
                 <li id="cHour1"></li>
@@ -139,7 +131,7 @@
                 <li id="hum1"></li>
               </ul>
             </div>
-            <!--hour 2-->
+            <!--next day forecast-->
             <div class="column is-narrow">
               <ul>
                 <li id="cHour2"></li>
@@ -151,7 +143,7 @@
                 <li id="hum2"></li>
               </ul>
             </div>
-              <!--hour 3-->
+              <!--2nd day forecast-->
               <div class="column is-narrow">
               <ul>
                 <li id="cHour3"></li>
@@ -163,7 +155,7 @@
                 <li id="hum3"></li>
               </ul>
             </div>
-            <!--hour 4-->
+            <!--3rd day forecast-->
             <div class="column is-narrow">
               <ul>
                 <li id="cHour4"></li>
@@ -175,7 +167,7 @@
                 <li id="hum4"></li>
               </ul>
             </div>
-            <!--hour 5-->
+            <!--4th day forecast-->
             <div class="column is-narrow">
               <ul>
                 <li id="cHour5"></li>
@@ -187,7 +179,7 @@
                 <li id="hum5"></li>
               </ul>
             </div>
-            <!--hour 6-->
+            <!--5th day forecast-->
             <div class="column is-narrow">
               <ul>
                 <li id="cHour6"></li>
@@ -199,7 +191,7 @@
                 <li id="hum6"></li>
               </ul>
             </div>
-            <!--hour 7-->
+            <!--6th day forecast-->
             <div class="column is-narrow">
               <ul>
                 <li id="cHour7"></li>
@@ -212,38 +204,24 @@
               </ul>
             </div>
           </div>
-          <!-- <p class="subtitle">Aligned with the right tile</p> -->
-          <div class="content">
-              
-          <!-- Content -->
-          </div>
         </article>
       </div>
     </div>
+    <!--Side panel section containing air quality index info-->
     <div  id="test" class="tile is-parent">
       <article class="tile is-child notification is-dark">
         <p class="title" id="aq-index">What is Air Quality Index?</p>
         <ul class="custom">
-          <li></li>
           <li>Air quality index (AQI) is a measure of how clean the air is. The higher the AQI value is, the more polluted the air is. Reference below for AQI categories.</li>
-          <a href="https://www.airnow.gov/aqi/aqi-basics/"><img id="aqi-img" src="./assets/images/AQI_Colors.png" alt="The different categores of air quality index and their color coding" title="Click for more info"></a>
-          <!-- <li><em>Source: <a href="https://www.airnow.gov/aqi/aqi-basics/">EPA AirNow</a></em></li> -->
-          
+          <a href="https://www.airnow.gov/aqi/aqi-basics/"><img id="aqi-img" src="./assets/images/AQI_Colors.png" alt="The different categores of air quality index and their color coding" title="Click for more info">
+          </a>
         </ul>
-        <!-- <p class="subtitle">Aligned with the right tile</p> -->
-        <div class="content">
-        <!-- Content -->
-        </div>
       </article>
-      </div>
-      <!-- <p class="subtitle">With even more content</p> -->
-      <div class="content"></div>
-      </div>
-      
-      <!--container where leaflet map goes-->
-      <div  id='map'  style='height:380px;'></div>  
     </div>
-
+    </div>
+    <!--Empty div container where leaflet map will be initialized-->
+    <div  id='map'  style='height:380px;'></div>
+    <!--Footer section containing About us section-->
     <footer class="section is-medium">
       <h2 class="title" id="about-us">About Current Fitness</h1>
         <br>
@@ -268,6 +246,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <!--jQuery CDN-->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!--jQuery autocomplete UI CDN-->
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="./assets/script/script.js"></script>
 
