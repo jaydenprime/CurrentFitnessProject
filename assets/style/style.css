@@ -22,6 +22,7 @@
 .maroon {
     background-color: #7e0023;
 }
+
 #map {
     display:flex;
     flex-wrap: wrap;
@@ -35,53 +36,24 @@
     text-align: center;
 }
 
-#heroTitle {
-    background-color: #a5e4b0;
+#current-aq {
+    color: black;
+    font-weight: bold;
 }
+
+#test {
+    height: fit-content;
+}
+
+.custom {
+    font-size: 28px;
+    font-style: oblique;
+}
+
 
 #weatherArt {
     background-color: rgb(64, 163, 233);
-}
 
-#airQ {
-    background-color: #d7a73f;
-}
-
-#airQ p {
-    text-align: center;
-}
-
-#airQ ul {
-    font-size: 20px;
-}
-
-#whyAirQ {
-background-color: #7efff0;
-}
-
-#whyAirQ ul li {
-    font-size: 20px;
-
-}
-#whyAirQ ul p {
-    font-size: 25px;
-    font-style: bold;
-}
-
-#sunriseTile {
-    text-align: center;
-    background-color: #ffee00;
-    font-size: 20px;
-}
-#sunsetTile {
-    text-align: center;
-    background-color: #80a8d1;
-    font-size: 20px;
-}
-
-.title {
-    font-size: 40px;
-    color: black;
 }
 
 #curWeather {
@@ -99,11 +71,16 @@ background-color: #7efff0;
     width: 170px;
 }
 
+#top-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #curWeatherCol ul:hover {
     border: 5px solid #a5e4b0;
     background-color: #f0ff69;
 }
-
 
 @media only screen and (max-width: 599px) {
   
