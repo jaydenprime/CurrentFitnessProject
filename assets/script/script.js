@@ -325,6 +325,7 @@ searchBtn.addEventListener("click", function() {
               let minTemp2 = data.daily[2].temp.min;
               let day2hum = data.daily[2].humidity;
               let day2wind = data.daily[2].wind_speed;
+              
               $("#cHour2").text("Around " + cHour2 + " Tomorrow");
               $("#hour2").text("It Will Feel like " + hour2.toFixed() + "°F");
               $("#clouds2").text(clouds2 + "% Cloud Coverage");
@@ -341,6 +342,7 @@ searchBtn.addEventListener("click", function() {
               let minTemp3 = data.daily[3].temp.min;
               let day3hum = data.daily[3].humidity;
               let day3wind = data.daily[3].wind_speed;
+
               $("#cHour3").text("Around " + cHour3 + " in 2 Days");
               $("#hour3").text("It Will Feel like " + hour3.toFixed() + "°F");
               $("#clouds3").text(clouds3 + "% Cloud Coverage");
@@ -414,6 +416,7 @@ searchBtn.addEventListener("click", function() {
               $("#hum7").text("Humidity:" + " " + day7hum + "%");
             });
       }
+
         //leaflet map API
         document.getElementById('map').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>"; 
         var  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  

@@ -34,6 +34,7 @@
           <a class="navbar-item">Home</a>
           <a class="navbar-item" href="#map">Map</a>
           <div class="navbar-item has-dropdown is-hoverable">
+
             <a class="navbar-link">More</a>
             <div class="navbar-dropdown">
               <a class="navbar-item" href="#about-us">About Us</a>
@@ -47,10 +48,10 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
+              <a class="button is-primary has-text-black">
                 <strong>Sign up</strong>
               </a>
-              <a class="button is-light">Log in</a>
+              <a class="button is-light has-text-black">Log in</a>
             </div>
           </div>
         </div>
@@ -80,15 +81,18 @@
     <br/>
     <!--main section-->
     <div class="tile is-ancestor">
-      <div class="tile is-vertical is-8">
+      <div class="tile is-vertical is-12">
         <div class="tile">
           <div class="tile is-parent">
+
             <!--Section displaying current sunrise time -->
             <article class="tile is-child notification is-warning">
+
               <div class="content">
                 <p class="title srss">Sunrise</p>
                   <div><img src="./assets/images/sunrise.svg" alt="Image depicting sunrise"></div>
                   <br>
+
                   <div id="sunrise" class="custom"></div>
               </div>
             </article>
@@ -101,6 +105,7 @@
                   <ul id="pollen-info">
                     <li id="tree-index"></li>
                   </ul>
+                  
             </article>
           </div>
           <!--Section displaying current air quality index value-->
@@ -114,10 +119,27 @@
               </ul>
               <br>
             </article>
+            <article>
+              <div id="whyAirQ" class="tile is-12 is-child notification has-text-black">
+                <p class="title">Why Air Quality Matters?</p>
+              <ul>
+                <li>PM2.5 = critical pollutant (at or below 12 μg/m3 is considered healthy with little to no risk from exposure. If the level goes to or above 35 μg/m3 during a 24-hour period, the air is considered unhealthy and can cause issues for people with existing breathing issues such as asthma.)</li>
+              <p>AQI Graph Display Numbers</p>
+              <img src="./assets/images/AQI_Colors.png">
+            </ul>
+            <!-- <p class="subtitle">Aligned with the right tile</p> -->
+            <div class="content">
+            <!-- Content -->
+            </div>
+              </div>
+            </article>
           </div>
+          
+          
         </div>
         <!--Current Weather and 7-day forecast section-->
         <div class="tile is-parent">
+
             <article id="weatherArt" class="tile is-child notification has-text-black">
             <p id="curWeather" class="title">Current Weather and Forecast</p>
             <div id="curWeatherCol"class="columns">
@@ -254,3 +276,8 @@
   </body>
 
 </html>
+
+
+
+
+
