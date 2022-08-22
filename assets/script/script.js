@@ -85,10 +85,8 @@ if (storedHistory) {
                   currentAQ.setAttribute("class", "maroon")
                 }
                 //gives AQ a category name
-                console.log(data[0].Category.Name)
                 category.textContent = data[0].Category.Name
                 // gives AQ a categry number
-                console.log(data[0].Category.Number)
                 number.textContent = data[0].Category.Number
           
               });
@@ -189,7 +187,7 @@ if (storedHistory) {
                 let day6hum = data.daily[6].humidity;
                 let day6wind = data.daily[6].wind_speed;
                 $("#cHour6").text("Around " + cHour6 + " in 5 Days");
-                $("#hour6").text("It Will Feel like " + hour6.toFixed());
+                $("#hour6").text("It Will Feel like " + hour6.toFixed() + "°F");
                 $("#clouds6").text(clouds6 + "% Cloud Coverage");
                 $("#maxTemp6").text("Daily High of: " + maxTemp6.toFixed() + "°F");
                 $("#minTemp6").text("Daily Low of: " + minTemp6.toFixed() + "°F");
@@ -286,10 +284,8 @@ searchBtn.addEventListener("click", function() {
                 currentAQ.setAttribute("class", "maroon")
               }
               //gives AQ a category name
-              console.log(data[0].Category.Name)
               category.textContent = data[0].Category.Name
               // gives AQ a categry number
-              console.log(data[0].Category.Number)
               number.textContent = data[0].Category.Number
         
             });
@@ -305,7 +301,7 @@ searchBtn.addEventListener("click", function() {
               return response.json();
             })
             .then(function (data) {
-
+              //current weather conditions
               let cHour1 = moment().add(1, "hourly").format("hh:" + "mma");
               let hour1 = data.hourly[1].feels_like;
               let clouds1 = data.hourly[1].clouds;
@@ -314,14 +310,14 @@ searchBtn.addEventListener("click", function() {
               let day1hum = data.daily[1].humidity;
               let day1wind = data.daily[1].wind_speed;
               $("#cHour1").text("Current Time: " + cHour1);
-              $("#hour1").text("Feels like " + hour1.toFixed());
+              $("#hour1").text("Feels like " + hour1.toFixed() + "°F");
               $("#clouds1").text(clouds1 + "% Cloud Coverage");
               $("#maxTemp1").text("High Today of: " + maxTemp1.toFixed() + "°F");
               $("#minTemp1").text("Low Today of: " + minTemp1.toFixed() + "°F");
               $("#wind1").text("Wind Speed: " + day1wind + " mph");
               $("#hum1").text("Humidity:" + " " + day1hum + "%");
 
-              //Hour 2
+              //next day weather conditions
               let cHour2 = moment().add(2, "hourly").format("hh:" + "mma");
               let hour2 = data.hourly[2].feels_like;
               let clouds2 = data.hourly[2].clouds;
@@ -337,7 +333,7 @@ searchBtn.addEventListener("click", function() {
               $("#wind2").text("Wind Speed: " + day2wind + " mph");
               $("#hum2").text("Humidity:" + " " + day2hum + "%");
 
-              //hour 3
+              //3rd day weather conditions
               let cHour3 = moment().add(3, "hourly").format("hh:" + "mma");
               let hour3 = data.hourly[3].feels_like;
               let clouds3 = data.hourly[3].clouds;
@@ -353,7 +349,7 @@ searchBtn.addEventListener("click", function() {
               $("#wind3").text("Wind Speed: " + day3wind + " mph");
               $("#hum3").text("Humidity:" + " " + day3hum + "%");
 
-              //hour 4
+              //4th day weather conditions
               let cHour4 = moment().add(4, "hourly").format("hh:" + "mma");
               let hour4 = data.hourly[4].feels_like;
               let clouds4 = data.hourly[4].clouds;
@@ -369,7 +365,7 @@ searchBtn.addEventListener("click", function() {
               $("#wind4").text("Wind Speed: " + day4wind + " mph");
               $("#hum4").text("Humidity:" + " " + day4hum + "%");
 
-              //hour 5
+              //5th day weather conditions
               let cHour5 = moment().add(5, "hourly").format("hh:" + "mma");
               let hour5 = data.hourly[5].feels_like;
               let clouds5 = data.hourly[5].clouds;
@@ -385,7 +381,7 @@ searchBtn.addEventListener("click", function() {
               $("#wind5").text("Wind Speed: " + day5wind + " mph");
               $("#hum5").text("Humidity:" + " " + day5hum + "%");
 
-              //hour 6
+              //6th day weather conditions
               let cHour6 = moment().add(6, "hourly").format("hh:" + "mma");
               let hour6 = data.hourly[6].feels_like;
               let clouds6 = data.hourly[6].clouds;
@@ -401,7 +397,7 @@ searchBtn.addEventListener("click", function() {
               $("#wind6").text("Wind Speed: " + day6wind + " mph");
               $("#hum6").text("Humidity:" + " " + day6hum + "%");
 
-              //hour 7
+              //7th day weather conditions
               let cHour7 = moment().add(7, "hourly").format("hh:" + "mma");
               let hour7 = data.hourly[7].feels_like;
               let clouds7 = data.hourly[7].clouds;
