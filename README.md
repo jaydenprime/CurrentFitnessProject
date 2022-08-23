@@ -10,6 +10,7 @@ The air quality includes an index that is color coded in accordance to the EPA a
 ## [Link to Depolyed Application](https://enigmakontrol.github.io/Current_Fitness/)
 
 ----
+## [Link to Presentation](https://docs.google.com/presentation/d/1x0yaE2icU3vMXuNmXmVP2HD4RbweMMjKyqp5dRWqiOo/edit#slide=id.)
 ----
 ## [Link to Code on GitHub](https://github.com/EnigmaKontrol/Current_Fitness)
 ----
