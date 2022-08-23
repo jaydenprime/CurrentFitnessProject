@@ -78,10 +78,10 @@ searchBtn.addEventListener("click", function() {
           var requestUrl = `https://www.airnowapi.org/aq/forecast/latLong/?format=application/json&latitude=${storedLat}&longitude=${storedLon}&date=2022-08-16&distance=25&API_KEY=${api.airNowKey}`;
         
           fetch(requestUrl)
-            .then(function (response) {
+            .then((response) => {
               return response.json(); 
             })
-            .then(function (data) {
+            .then((data) => {
               console.log(data)
               //gives air quality
               console.log(data[0].AQI)
